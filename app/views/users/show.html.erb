@@ -1,2 +1,5 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @users.first_name + " " + @users.last_name %></h1>
+<h2>About Me</h2>
+<p><%= "Hallo, my name is " + @users.first_name + "!" %></p>
+<p><%= "You can reach me at " + @users.phone + " or " + @users.email + "." %></p>
+<%= link_to "Home", "/" %>
