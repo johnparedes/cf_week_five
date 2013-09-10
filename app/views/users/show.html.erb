@@ -1,5 +1,6 @@
-<h1><%= @users.first_name + " " + @users.last_name %></h1>
+<h1><%= @user.first_name + " " + @user.last_name %></h1>
 <h2>About Me</h2>
-<p><%= "Hallo, my name is " + @users.first_name + "!" %></p>
-<p><%= "You can reach me at " + @users.phone + " or " + @users.email + "." %></p>
-<%= link_to "Home", "/" %>
+<p><%= "Hallo, my name is " + @user.first_name + "!" %></p>
+<p><%= "You can reach me at " + @user.phone + " or " + @user.email + "." %></p>
+<%= link_to "Edit", edit_user_path %></br>
+<%= link_to "Home", users_path %>

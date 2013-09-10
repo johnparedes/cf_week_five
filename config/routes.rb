@@ -1,8 +1,4 @@
 CfWeekFive::Application.routes.draw do
-  #get "users/index"
-  #get "users/:id", to: "users#show", as: :id
-  #get "users/new"
-  #get "users/edit"
   resources :users
   root "users#index"
   # The priority is based upon order of creation: first created -> highest priority.

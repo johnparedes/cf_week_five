@@ -2,19 +2,22 @@ class UsersController < ApplicationController
 
 before_action :find_user, only: %w(edit update show)
 
+  def show
+  end
+
   def index
     @users = User.all
   end
 
   def new
-    @users = User.new
+    @user = User.new
   end
 
   def create
     @users = User.new users_params
-    if @user.save
-      flash.notice = "You successfully created a new user."
-      redirect_to "/"
+    if @users.save
+      flash[:notice] = "You successfully created a new user."
+      redirect_to @users
     else
      render "new"
     end
@@ -24,9 +27,9 @@ before_action :find_user, only: %w(edit update show)
   end
 
   def update
-    if @user.update user_params
-      flash.notice = "Successfully updated user record."
-      redirect_to "/"
+    if @user.update users_params
+      flash[:notice] = "Successfully updated user record."
+      redirect_to users_url
     else
       render "edit"
     end
@@ -35,20 +38,17 @@ before_action :find_user, only: %w(edit update show)
   def destroy
     User.find(params[:id]).destroy
     flash[:notice] = "You have successfully deleted the user."
-    redirect_to "/"
-  end
-
-  def show
+    redirect_to users_url
   end
 
   private
 
   def find_user
-    @users = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def users_params
-    params.require(:first_name).require(:last_name).permit(:phone, :email)
+    params.require(:user).permit(:first_name, :last_name, :phone, :email)
   end
 
 end
